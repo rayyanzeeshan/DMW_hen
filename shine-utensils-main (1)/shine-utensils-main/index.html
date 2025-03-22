@@ -170,7 +170,7 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col-md-4">
-        <article class="card1">
+        <article class="card">
           <img
             class="card__background"
             src="images/G3.webp"
@@ -190,7 +190,7 @@
         </article>
         </div>
         <div class="col-md-4">
-        <article class="card1">
+        <article class="card">
           <img
             class="card__background"
             src="images/m12.jpg"
@@ -210,7 +210,7 @@
         </article>
         </div>
         <div class="col-md-4">
-          <article class="card1">
+          <article class="card">
             <img
               class="card__background"
               src="images/set3.jpg"
@@ -234,7 +234,7 @@
     
     <div class="row mt-5">
       <div class="col-md-4">
-        <article class="card1">
+        <article class="card">
           <img
             class="card__background"
             src="images/sw4.jpg"
@@ -255,7 +255,7 @@
         </article>
         </div>
         <div class="col-md-4">
-        <article class="card1">
+        <article class="card">
           <img
             class="card__background"
             src="images/SWS1.webp"
@@ -275,7 +275,7 @@
         </article>
         </div>
         <div class="col-md-4">
-          <article class="card1">
+          <article class="card">
             <img
               class="card__background"
               src="images/DS3.jpg"
@@ -319,7 +319,105 @@
 
 
 
+<footer class="container mt-5">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Images -->
+    <section>
+      <div class="row">
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg1" src="images/DS3.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg2" src="images/cooker2.png" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg3" src="images/SWS2.webp" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg4" src="images/sw4.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg5" src="images/si9.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init class="bg-image hover-overlay shadow-1-strong rounded" data-ripple-color="light">
+            <img id="myImg6" src="images/G10.webp"  class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Images -->
+  </div>
+  
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+  
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" height="500px" width="300px" id="img01">
+  
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
+  
 
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get all the images with ids and insert them into the modal when clicked
+var images = document.querySelectorAll("img[id^='myImg']"); // Select all images with id starting with 'myImg'
+var modalImg = document.getElementById("img01");
+
+// Loop through all images and add a click event listener
+images.forEach(function(image) {
+  image.onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+</script>
 
 <!-- card+image -->
 
@@ -346,31 +444,28 @@
             perform exceptionally but also add elegance to your kitchen.
             Explore our collection today and discover the perfect tools to make every meal a culinary masterpiece.</p>
           
-</div>
-</div>
-</div>
-</div>
-</section>
+
+
+
 <!-- FULL SCREEN IMAGE -->
-<div class="container-fluid mt-5 margin-auto">
-<div class="card mb-5">
-  <img src="images/about.jpg" class="card-img-top" alt="...">
-  <div class="card-body" >
-    <!-- <h5 class="card-title">SHINNING UTENSILS</h5> -->
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-body-secondary"> The best cooking utensil is the Dutch oven, the real ones that have legs and a rim around the lid to hold coals. 2 One speck of dirt on your utensils may contain enough germs to taint an entire batch of preserves.</small></p>
-  </div>
-</div>       
-           </div> 
+
+
+            <div class="card bg-dark text-white">
+              <img src="images/m12.jpg" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text">Quality craftsmanship, durable materials, and modern design to elevate your cooking experience.
+                </p>
+              </div>
+            </div>
+                      
+            
 <!-- end -->
 
 <!-- TOP SELLING ITEM -->
-<H1 class="text-black text-center" >TOP SELLING ITEMS</H1>
-<div class="container mt-5">
-  
 
-<div class="row mb-3">
-  <div class="col-md-4">
+<div class="card-group">
   <div class="card">
     <img src="images/ch3.png" class="card-img-top" alt="...">
     <div class="card-body">
@@ -378,8 +473,7 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-  <div class="col-md-4">
+  </div>
   <div class="card">
     <img src="images/dinner5.jpg" class="card-img-top" alt="...">
     <div class="card-body">
@@ -387,8 +481,7 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-  <div class="col-md-4">
+  </div>
   <div class="card">
     <img src="images/G12.webp" class="card-img-top" alt="...">
     <div class="card-body">
@@ -396,12 +489,11 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-</div> 
+  </div>
+</div>
 
 
-<div class="row mb-3">
-  <div class="col-md-4">
+<div class="card-group">
   <div class="card">
     <img src="images/m6.png" class="card-img-top" alt="...">
     <div class="card-body">
@@ -409,29 +501,27 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-  <div class="col-md-4">
+  </div>
   <div class="card">
     <img src="images/G14.jpg" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"></h5>
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
-    </div></div>
-  </div><div class="col-md-4">
+    </div>
+  </div>
   <div class="card">
     <img src="images/SWS3.webp" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"></h5>
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
-    </div></div>
+    </div>
   </div>
-</div> 
+</div>
 
 
- <div class="row">
-  <div class="col-md-4">
+<div class="card-group">
   <div class="card">
     <img src="images/SWS2.webp" class="card-img-top" alt="...">
     <div class="card-body">
@@ -439,17 +529,15 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-  <div class="col-md-4">
+  </div>
   <div class="card">
     <img src="images/G3.webp" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"></h5>
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
-    </div></div>
+    </div>
   </div>
-  <div class="col-md-4">
   <div class="card">
     <img src="images/sw5.jpg" class="card-img-top" alt="...">
     <div class="card-body">
@@ -457,9 +545,9 @@
       <p class="card-text"></p>
       <p class="card-text"><small class="text-muted"></small></p>
     </div>
-  </div></div>
-</div> 
+  </div>
 </div>
+
 <!-- END -->
 
 
@@ -495,7 +583,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div> 
+</div>
 
 
 <!-- end -->
@@ -506,143 +594,40 @@
 
 
 
-<!-- <div class="note note-primary mb-3 text-black">
+<div class="note note-primary mb-3">
   <strong>Note primary:</strong> "I’ve used many chef’s knives in my life, and this one is the best for the price! The blade is incredibly sharp, and it stays that way for a long time.
    It’s also very lightweight and balanced, which reduces hand strain
 </div>
 
-<div class="note note-secondary mb-3 text-black">
+<div class="note note-secondary mb-3">
   <strong>Note secondary:</strong>These spoons are fantastic! They are well-made, and the grip is so comfortable.
    I use them daily for stirring and cooking in my non-stick pans, and they haven't scratched anything
 </div>
 
-<div class="note note-success mb-3 text-black">
+<div class="note note-success mb-3">
   <strong>Note success:</strong>These tongs are so easy to use! The locking mechanism works great, and they are sturdy enough to handle grilling or frying without any issues.
    They’re also dishwasher safe, which is a huge plus
 </div>
 
-<div class="note note-danger mb-3 text-black">
+<div class="note note-danger mb-3">
   <strong>Note danger:</strong> Great spatula for mixing batters and scraping bowls.
    It doesn’t stain or retain odors, and it holds up well even with heavy use.
 </div>
 
-<div class="note note-warning mb-3 text-black">
+<div class="note note-warning mb-3">
   <strong>Note warning:</strong> This juicer is great for squeezing oranges, lemons, and limes. It’s very efficient and extracts juice without too much effort.
    I also love how it keeps the seeds separated from the juice.
 </div>
 
-<div class="note note-info mb-3 text-black">
+<div class="note note-info mb-3">
   <strong>Note info:</strong>These bowls are perfect for all kinds of cooking. The glass is thick and durable, and I love that they’re microwave and dishwasher safe. 
   The set of various sizes works well for mixing, serving, or storing leftovers
 </div>
 
-<div class="note note-light mb-3 text-black">
+<div class="note note-light mb-3">
   <strong>Note light:</strong> I love this pasta server! It’s the perfect size for grabbing a good portion of spaghetti or penne
   . The prongs are just the right shape to grab pasta without it slipping off.
-</div> -->
-
-
-
-
-<section>
-  <div class="container mt-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-10 col-xl-8 text-center text-dark">
-      <h3 class="mb-4">REVIEWS</h3>
-      <p class="mb-4 pb-2 mb-md-5 pb-md-0 text-black">
-        We're thrilled to hear that our team exceeded your expectations in providing [specific service]. About [UTENSILS], we strive to deliver professional and efficient service to all our clients. We truly appreciate your kind words and look forward to working with you again in the future!”
-      </p>
-    </div>
-  </div>
-
-  <div class="row text-center text-dark">
-    <div class="col-md-4 mb-5 mb-md-0">
-      <div class="d-flex justify-content-center mb-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
-          class="rounded-circle shadow-1-strong" width="150" height="150" />
-      </div>
-      <h5 class="mb-3 text-black">AYESHA ILYAS</h5>
-      <h6 class="text-primary mb-3 text-black">Web Developer</h6>
-      <p class="px-xl-3 text-black">
-        <i class="fa fa-quote-left pe-2 text-black"></i>“The product quality is consistently outstanding, exceeding my expectations every time.”
-      </p>
-      <ul class="list-unstyled d-flex justify-content-center mb-0">
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star-half-alt fa-sm text-warning"></i>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-4 mb-5 mb-md-0">
-      <div class="d-flex justify-content-center mb-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
-          class="rounded-circle shadow-1-strong" width="150" height="150" />
-      </div>
-      <h5 class="mb-3 text-black">FAIZA NASIR</h5>
-      <h6 class="text-primary mb-3 text-black">Graphic Designer</h6>
-      <p class="px-xl-3 text-black">
-        <i class="fa fa-quote-left pe-2 text-black"></i>“The product quality is consistently outstanding, exceeding my expectations every time.”
-      <ul class="list-unstyled d-flex justify-content-center mb-0">
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-4 mb-0">
-      <div class="d-flex justify-content-center mb-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
-          class="rounded-circle shadow-1-strong" width="150" height="150" />
-      </div>
-      <h5 class="mb-3">FAHAD ALAM</h5>
-      <h6 class="text-primary mb-3">Digital Marketer</h6>
-      <p class="px-xl-3 text-black">
-        <i class="fa fa-quote-left pe-2"></i>I highly recommend this business.”
-        “Their customer service is second to none.”
-      <ul class="list-unstyled d-flex justify-content-center mb-0">
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-        <li>
-          <i class="fa fa-star fa-sm text-warning"></i>
-        </li>
-      </ul>
-    </div>
-  </div>
-  </div>
-</section>
-
+</div>
 
 
 
@@ -756,7 +741,7 @@
 
 
   <div class="text-center p-4 text-black" style="background-color: rgba(0, 0, 0, 0.05);">
-    <a class="fw-bold text-dark" href="index.html"><P class="text-dark">2024 SHINNING UTENSILS All rights reserved.</P></a>
+    <a class="text-reset fw-bold text-black" href="index.html"></a><P>2024 SHINNING UTENSILS All rights reserved.</P>
   </div>
 </footer>
 <script>
