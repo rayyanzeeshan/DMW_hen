@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Marksheet</h1>
+    
+    <div class="form-container">
+        <h2>Enter Student Details</h2>
+        
+        <form id="studentForm">
+            <label for="firstName">Enter First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            
+            <label for="lastName">Enter Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            
+            <label for="institute">Enter Institute:</label>
+            <input type="text" id="institute" name="institute" required>
+            
+            <label for="batch">Enter   Batch:</label>
+            <input type="text" id="batch" name="batch" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Get the form element
+        const form = document.getElementById('studentForm');
+
+        // Add event listener to handle form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Get the values from the form
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const institute = document.getElementById('institute').value;
+            const batch = document.getElementById('batch').value;
+
+            // Create a new div to display the student details
+            const studentDetails = document.createElement('div');
+            studentDetails.innerHTML = `
+                <h3>Student Details:</h3>
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>Institute:</strong> ${institute}</p>
+                <p><strong>Batch:</strong> ${batch}</p>
+            `;
+
+            // Append the student details to the body
+            document.body.appendChild(studentDetails);
+
+            // Clear the form after submission
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
