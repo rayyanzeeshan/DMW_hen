@@ -33,6 +33,7 @@
 <script>
     let users = [];
     let editIndex = -1;
+    let lastId = 0;
 
     function addUsers() {
         let name = document.getElementById('name').value;
@@ -43,8 +44,9 @@
             return;
         }
         if (editIndex === -1) {
+            lastId++;
             users.push({
-                id : users.length + 1 , name , age
+                id : lastId , name ,age
             });
         }else{
             users[editIndex].name = name;
@@ -85,6 +87,7 @@
         users.splice(index,1);
         displayUser();
     }
+    
 
 displayUser();
 </script>
