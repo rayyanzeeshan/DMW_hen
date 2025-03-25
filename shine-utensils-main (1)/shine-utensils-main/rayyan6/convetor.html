@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="usd" placeholder="Enter Amount">
+  <select name="" id="currency">
+    <option value="dollar">$</option>
+    <option value="euro">€</option>
+    <option value="pound">£</option>
+  </select>
+
+  <p id="converted"></p>
+    <button type="submit" onclick="currencychange()">submit</button>
+    
+
+    <script>
+        function currencychange(){
+        var amount = document.getElementById('usd').value;
+        var currency=document.getElementById('currency').value;
+        var change=0;
+            if (currency=='dollar') {
+                change = amount*279.05;
+        }
+        else if(currency=='euro'){
+          change = amount*330.21;
+        }
+        else if(currency=='pound'){
+          change=amount*350;
+        }
+        document.getElementById('converted').innerHTML=change;
+    }
+    </script>
+</body>
+</html>

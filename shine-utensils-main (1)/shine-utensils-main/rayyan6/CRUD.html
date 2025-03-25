@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<!-- CRUD || Create , Read , Update , Delete -->
+
+<h1>Add Users</h1>
+<input type="text" name="" id="name" placeholder="Enter Name">
+<input type="text" name="" id="age" placeholder="Enter Age">
+<button type="submit" onclick="addUsers()">Add User</button>
+
+
+<h1>Show Users</h1>
+
+<table border="2">
+    <thead>
+    <tr>Id</tr>
+    <tr>Name</tr>
+    <tr>Age</tr>
+    <tr>Action</tr>
+</thead>
+<tbody id="userTable"></tbody>
+
+</table>
+
+
+<script>
+    let users = [];
+    let editIndex = -1;
+
+    function addUsers() {
+        let name = document.getElementById('name').value;
+        let age = document.getElementById('age').value;
+
+        if (name === "" || age === "") {
+            alert("Enter Fields");
+            return;
+        }
+        if (editIndex === -1) {
+            users.push({
+                id : users.length + 1 , name , age
+            });
+        }else{
+            users[editIndex].name = name;
+            users[editIndex].age = age;
+            editIndex = -1;
+        }
+        document.getElementById('name').value = "";
+        document.getElementById('age').value = "";
+        displayUser();
+
+    }
+
+    function displayUser() {
+        let table = document.getElementById('userTable');
+        table.innerHTML="";
+        users.forEach((user , index)=>{
+            table.innerHTML += `
+            <tr>
+                <td> ${user.id} </td>
+                <td> ${user.name} </td>
+                <td> ${user.age} </td>
+
+                <td> <button onclick="editUser(${index})">Edit</button> </td>
+                <td> <button onclick="deleteUser(${index})">Delete</button> </td>
+
+
+                </tr>`;
+        });
+    }
+
+    function editUser(index){
+        document.getElementById('name').value = users[index].name;
+        document.getElementById('age').value = users[index].age;
+        editIndex = index;
+    }
+
+    function deleteUser(index) {
+        users.splice(index,1);
+        displayUser();
+    }
+
+displayUser();
+</script>
+
+
+
+</body>
+</html>
