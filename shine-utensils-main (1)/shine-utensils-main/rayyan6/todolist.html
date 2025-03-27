@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List with CRUD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .button {
+      background-color: #007BFF;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    .edit {
+      background-color: #28a745;
+    }
+    .delete {
+      background-color: #dc3545;
+    }
+    .input-task {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To-Do List with CRUD</h1>
+  <input type="text" id="newTask" class="input-task" placeholder="Enter new task">
+  <button class="button" onclick="addTask()">Add Task</button>
+
+  <ul id="taskList">
+    <!-- Tasks will be added here dynamically -->
+  </ul>
+
+  <script>
+    let tasks = [];
+
+    // Add Task (Create)
+    function addTask() {
+      const taskInput = document.getElementById('newTask');
+      const taskText = taskInput.value.trim();
+
+      if (taskText) {
+        const newTask = {
+          id: Date.now(),
+          text: taskText
+        };
+        tasks.push(newTask);
+        taskInput.value = '';
+        renderTasks();
+      }
+    }
+
+    // Render Tasks (Read)
+    function renderTasks() {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${task.text}</span>
+          <div>
+            <button class="button edit" onclick="editTask(${task.id})">Edit</button>
+            <button class="button delete" onclick="deleteTask(${task.id})">Delete</button>
+          </div>
+        `;
+        taskList.appendChild(li);
+      });
+    }
+
+    // Edit Task (Update)
+    function editTask(taskId) {
+      const task = tasks.find(t => t.id === taskId);
+      const newText = prompt('Edit task:', task.text);
+
+      if (newText && newText !== task.text) {
+        task.text = newText.trim();
+        renderTasks();
+      }
+    }
+
+    // Delete Task (Delete)
+    function deleteTask(taskId) {
+      tasks = tasks.filter(t => t.id !== taskId);
+      renderTasks();
+    }
+  </script>
+</body>
+</html>
