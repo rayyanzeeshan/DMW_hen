@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Info</title>
+    <style>
+        .movie-info {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .movie-info p {
+            margin: 5px 0;
+        }
+        .movie-info img {
+            max-width: 300px;
+            height: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="movie" placeholder="Enter movie name">
+    <button type="submit" onclick="getmovie()">Search karo yaaaar</button>
+
+    <div id="movie-details" class="movie-info"></div>
+
+    <script>
+        async function getmovie() {
+            var movie = document.getElementById("movie").value;
+            const apikey = "779c102f";
+            const url = `http://www.omdbapi.com/?apikey=${apikey}&t=${movie}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.Response === "False") {
+                    document.getElementById("movie-details").innerHTML = `<p>Movie not found. Please try again.</p>`;
+                } else {
+                    document.getElementById("movie-details").innerHTML = `
+                        <h2>${data.Title}</h2>
+                        <img src="${data.Poster}" alt="${data.Title} Poster">
+                        <p><strong>Actors:</strong> ${data.Actors}</p>
+                        <p><strong>Rated:</strong> ${data.Rated}</p>
+                        <p><strong>Released:</strong> ${data.Released}</p>
+                        <p><strong>Runtime:</strong> ${data.Runtime}</p>
+                        <p><strong>Awards:</strong> ${data.Awards}</p>
+                        <p><strong>IMDB Rating:</strong> ${data.imdbRating}</p>
+                        <p><strong>IMDB Votes:</strong> ${data.imdbVotes}</p>
+                        <p><strong>IMDB ID:</strong> ${data.imdbID}</p>
+                        <p><strong>Director:</strong> ${data.Director}</p>
+                        <p><strong>Writer:</strong> ${data.Writer}</p>
+                        <p><strong>Language:</strong> ${data.Language}</p>
+                        <p><strong>Country:</strong> ${data.Country}</p>
+                        <p><strong>Production:</strong> ${data.Production}</p>
+                        <p><strong>Box Office:</strong> ${data.BoxOffice}</p>
+                        <p><strong>Website:</strong> ${data.Website}</p>
+                        <p><strong>Response:</strong> ${data.Response}</p>
+                        <p><strong>Year:</strong> ${data.Year}</p>
+                        <p><strong>Genre:</strong> ${data.Genre}</p>
+                        <p><strong>Plot:</strong> ${data.Plot}</p>
+                    `;
+                }
+            } 
+            catch (error) {
+                console.error("Error fetching movie details:", error);
+                document.getElementById("movie-details").innerHTML = `<p>Error fetching movie details. Please try again.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
