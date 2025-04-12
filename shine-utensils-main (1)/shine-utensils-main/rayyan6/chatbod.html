@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        // Using o3-mini model
+        puter.ai.chat(
+            "Write a short poem about coding",
+            { model: "o3-mini" }
+        ).then(response => {
+            puter.print("<h2>Using o3-mini model</h2>");
+            puter.print(response);
+        });
+
+        // Using o1-mini model
+        puter.ai.chat(
+            "Write a short poem about coding",
+            { model: "o1-mini" }
+        ).then(response => {
+            puter.print("<h2>Using o1-mini model</h2>");
+            puter.print(response);
+        });
+
+        // Using 4o model
+        puter.ai.chat(
+            "Write a short poem about coding",
+            { model: "gpt-4o" }
+        ).then(response => {
+            puter.print("<h2>Using gpt-4o model</h2>");
+            puter.print(response);
+        });
+    </script>
+
+</body>
+</html>
