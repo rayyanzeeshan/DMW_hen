@@ -2,135 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI Chatbot</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ececec;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .chat-container {
-      width: 400px;
-      height: 600px;
-      background: rgb(40, 97, 176);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      overflow: hidden;
-    }
-    .chat-box {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-    }
-    .message {
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 10px;
-      max-width: 80%;
-    }
-    .user {
-      align-self: flex-end;
-      background: #9fa3a8;
-      color: white;
-    }
-    .bot {
-      align-self: flex-start;
-      background: #ae9292;
-    }
-    .input-container {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-    input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 15px;
-      border: none;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-box" id="chatBox"></div>
-    <div class="input-container">
-      <input type="text" id="userInput" placeholder="Ask something..." />
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+<h1>chatbot</h1>
+<div class="chatbox"></div>
+<input type="text" name="" id="userInput" placeholder="Ask a Questions.......">
+<button onclick="sendMessage()"> Send </button>
 
-  <script>
-    const API_KEY = "1bed4102-71b5-49f7-9442-9aaa347da76b"; 
+<script>
+  async function sendMessage() {
+    const userInput =document.getElementById("userInput").value
+    if(!userInput)return;
 
-    async function sendMessage() {
-      const input = document.getElementById("userInput");
-      const message = input.value.trim();
-      if (message === "") return;
+    const chatbox=document.getElementById("chatbox");
+    chatbox.innerHTML += `<div class='message user'>${userInput}</div>`;
+    document.getElementById("userInput").value="";
 
-      appendMessage("user", message);
-      input.value = "";
-
-      appendMessage("bot", "Typing...");
-
-      const response = await getAIResponse(message);
-      removeLastBotMessage();
-      appendMessage("bot", response);
-    }
-
-    function appendMessage(sender, text) {
-      const chatBox = document.getElementById("chatBox");
-      const messageDiv = document.createElement("div");
-      messageDiv.className = `message ${sender}`;
-      messageDiv.textContent = text;
-      chatBox.appendChild(messageDiv);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function removeLastBotMessage() {
-      const chatBox = document.getElementById("chatBox");
-      const messages = chatBox.querySelectorAll(".bot");
-      if (messages.length > 0) {
-        chatBox.removeChild(messages[messages.length - 1]);
+    try{  
+      const response = await fetch("https://api.together.xyz/v1/chat/completions",{
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json",
+          "`Authorization": "Bearer tgp_v1_aCgU_y3tUqM1jF74jI38rRF5XkiOszorllsNwhNEmIQ"
+      },
+      body: JSON.stringify({ 
+        model: "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+        messages: [{role: "system", 
+                    content: "What are some fun things to do in New York?"
+                  },
+                  {role: "user",content:userInput}
+                  ]
+       })
+      });
+      const data = await response.json();
+      const botMessage="Error :No Response  from AI";
+      
+      console.log(data);
+      
+      if(data.choices && data.choices.length >0){
+        botMessage = data.choices[0].message.content;
       }
-    }
 
-    async function getAIResponse(prompt) {
-      try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: prompt }],
-            max_tokens: 150
-          })
-        });
-
-        const data = await response.json();
-        return data.choices[0].message.content.trim();
-      } catch (error) {
-        return "Something went wrong. Check the console.";
-      }
+      chatbot.innerhtml+=`<div class='message bot'>${botMessage}</div>`;
+      chatbot.scrolltop=chatbot.scrollHeight;
+    }catch(error){
+      console.error("error fetching API response:",error);
+      chatbot.innerHtml+=`<div class='messsage bot'>Error connecting to API</div>`;
     }
-  </script>
+  }
+
+</script>
 </body>
 </html>
-a
